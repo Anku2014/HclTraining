@@ -1,0 +1,11 @@
+use hcl;
+select avg(h8) as average_8th_hour_consumption from electricity_reading;
+select avg(fine_amount) as average_fine_amount from bill where year=2020;
+select sum(payable_amount) as sum_payable_amount from bill;
+select sum(payable_amount) as sum_payable_amount from bill where due_date like '2020-09-21';
+select avg(total_units) as average_units_of_electricity from electricity_reading;
+select avg(payable_amount) as average_payable_amount from bill where payable_amount>450;
+select min(total_units) as min_total_units from electricity_reading;
+select min(fine_amount) as second_min_fine_amount from bill where fine_amount>(select min(fine_amount) from bill);
+select month, total_units/month as minimum_units from bill;
+select stddev(fine_amount) as standard_deviation_amount from bill where year(payment_date)=2020;
