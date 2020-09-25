@@ -1,0 +1,29 @@
+use hcl;
+select * from electricity_connection_type;
+select * from electricity_connection_type order by connection_name;
+select * from building_type;
+select * from building_type order by name asc;
+create table building(id int(11) primary key,owner_name varchar(100),address varchar(100)not null,building_type_id int not null,contact_number varchar(100)not null,email_address varchar(100)not null);
+insert into building values(1,'ankit','ranchi',010,7979066718,'ankitbdwj@gmail.com'),(2,'manisha','delhi',020,9790718128,'manisha@gmail.com'),(3,'anshu','jsr',030,9543728908,'anshu@gmail.com');
+select * from building order by owner_name asc;
+create table electricity_reading(id int(11) primary key,meter_id int(11),day date not null,h1 int(11) not null,h2 int(11),h3 int(11),h4 int(11),h5 int(11),h6 int(11),h7 int(11),h8 int(11),h9 int,h10 int,h11 int,h12 int,h13 int,h14 int,h15 int,h16 int,h17 int,h18 int,h19 int,h20 int,h21 int,h22 int,h23 int,h24 int,total_units int(11));
+select * from electricity_reading order by total_units desc;
+create table meter(id int(11) primary key,meter_number varchar(100) not null,building_id int(11));
+insert into meter values(1,10,100),(2,20,200),(3,30,300);
+select meter_number from meter;
+select owner_name,contact_number from building order by owner_name asc;
+create table bill(id int(11),meter_id int(11),month int(11),year int(11),due_date DATE,total_units int(11),payable_amount DOUBLE,is_payed TINYINT(1),payment_date DATE,fine_amount double);
+insert into
+bill(id,month,year,due_date,total_units,payable_amount,is_payed,payment_date,fine_amount,meter_i
+d) values (1,09,'2020','2020-09-21',45,670,23,'2020-09-30',50,1),(2,09,'2019','2019-09-
+21',98,679,22,'2019-09-30',51,2);
+select total_units, payable_amount, fine_amount from bill order by total_units desc;
+select * from slab order by from_unit desc;
+select * from building where owner_name='Nicholas';
+select * from bill where total_units>10000  order by total_units desc;
+select * from bill where due_date=’2017-10-01’ order by payable_amount desc;
+select owner_name,address,contact_number from building where email_address='null' order by owner_name asc;
+select * from building where owner_name like 'm%' order by owner_name asc;
+select * from building where building_type_id=2 order by owner_name asc;
+select * from electricity_reading where total_units between 500 and 1000 order by total_units asc;
+select meter_id,total_units from electricity_reading where h13<h14 order by total_units desc;
