@@ -1,0 +1,15 @@
+use hcl;
+select owner_name, length(owner_name) as name_length from building order by owner_name;
+select owner_name, contact_number from building where length(owner_name)=(select min(length(owner_name)) from building);
+select owner_name, concat(contact_number,'-',email_address) as contact_details from building order by owner_name desc;
+select substring(meter_number,1,3) as meter_code from meter order by meter_code desc;
+select left(owner_name,3) name_code,contact_number from building order by owner_name;
+select * from building where owner_name like '%di%' order by owner_name;
+select count(*) as bills_paid_without_fine from bill where fine_amount=50 and month=10 and year=2017;
+select sum(fine_amount) as total_fine from bill where payment_date between '2017-10-01' and '2017-11-01';
+select day,total_units as total_units_per_day from electricity_reading where day between '2017-10-01' and '2017-11-01' order by day;
+select due_date, payable_amount from bill where payment_date not between '2017-09-10' and '2017-10-10';
+select * from bill b join meter m where b.meter_id=m.id order by payable_amount;
+select m.meter_number, b.owner_name, b.address, b.contact_number from building b left join meter m on m.building_id=b.building_type_id order by owner_name and meter_number;
+select e.connection_name, s1.from_unit, s1.to_unit, s1.rate from electricity_connection_type e left join slab s1 on s.connection_type_id=e.id order by rate;
+select e.connection_name,s1.from_unit,s1.to_unit from slab s1 join  electricity_connection_type e  on s1.connection_type_id = e.id order by s1.rate;
