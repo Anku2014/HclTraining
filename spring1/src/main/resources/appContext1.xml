@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<context:annotation-config></context:annotation-config>
+<bean name="box" class="org.hcl2.Box" autowire="byType">
+<property name="length" value="10"></property>
+<property name="width" value="12"></property>
+</bean>
+
+<bean name="user" class="org.hcl2.User">
+<property name="name" value="Suresh"></property>
+<property name="password" value="suresh"></property>
+</bean>
+
+
+</beans>
